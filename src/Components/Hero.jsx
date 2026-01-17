@@ -29,9 +29,9 @@ export default function Hero() {
   const goPrev = () => setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
 
   return (
-    <div className=" h-screen w-full">
+    <div className="w-full">
    <Navbar />
-    <div id="Home" className="relative overflow-hidden h-[85vh]">
+    <div id="Home" className="relative overflow-hidden h-[80vh]">
       {/* Background images */}
       {slides.map((slide, index) => (
         <img
@@ -58,7 +58,7 @@ export default function Hero() {
           </h1>
           <a
             href=""
-            className=" hover:bg-red-700 transition text-white px-6 py-3 rounded-full text-sm md:text-lg font-semibold shadow-lg"
+            className=" hover:bg-transparent border border-dark-green bg-dark-green transition ease-in-out text-white px-6 py-3 rounded-full text-sm md:text-lg font-semibold shadow-lg"
           >
             Get Started
           </a>
@@ -87,7 +87,7 @@ export default function Hero() {
             key={index}
             onClick={() => setCurrent(index)}
             className={`w-3 h-3 rounded-full cursor-pointer transition-all ${
-              index === current ? "bg-red-600 scale-110" : "bg-white/40"
+              index === current ? "bg-dark-green scale-110" : "bg-white/40"
             }`}
           ></div>
         ))}
