@@ -5,14 +5,14 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="bg-dark-green px-2 sm:px-5 py-2">
+    <nav className="bg-white px-2 sm:px-5 py-2">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <img src={Logo} className="w-32 sm:w-50" alt="SwiftPay Logo" />
 
         {/* Hamburger Menu (Mobile) */}
         <button 
-          className="sm:hidden text-white focus:outline-none" 
+          className="sm:hidden text-dark-green focus:outline-none" 
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? (
@@ -27,7 +27,7 @@ const Navbar = () => {
         </button>
 
         {/* Desktop Menu */}
-        <ul className="hidden sm:flex text-white items-center space-x-4 font-bold text-sm">
+        <ul className="hidden sm:flex text-white items-center space-x-2 sm:space-x-4 font-bold text-sm">
           <a 
             href="login" 
             className="text-dark-green rounded-full hover:bg-dark-green hover:text-white bg-transparent border border-dark-green px-4 py-2 transition-all duration-300 ease-in-out"
