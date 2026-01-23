@@ -5,3 +5,18 @@
   --color-dark-green: #0CBBAE;
   --color-orange: #FFAF1F;
 };
+html{
+  scroll-behavior: smooth;
+}
+input, textarea{
+  padding: 10px 20px;
+  border: 2px solid var(--color-blue);
+  &:focus{
+    outline: none;
+    border-color: none;
+  }
+
+}
+button{
+  cursor: pointer;
+}
