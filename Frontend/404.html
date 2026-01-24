@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0; url=/" />
+  </head>
+  <body>
+    <script>
+      // Redirect all paths back to index.html so React Router can handle them
+      var redirectTo = window.location.protocol + "//" + window.location.host + "/";
+      window.location.replace(redirectTo);
+    </script>
+  </body>
+</html>
