@@ -14,14 +14,22 @@ const PORT = process.env.PORT;
 
 connectDb();
 
-app.use(cors());
+app.use(cors({
+  origin: ["https://spectracode-tech.github.io"],
+  credentials: true
+}));
 app.use(express.json());
+
+
+
+
+
 
 app.use("/api/users", userRoutes);
 app.use("/api/users", transactionRoutes);
 
 app.get("/", (req, res) => {
-  res.send("QuickPay API is running....");
+  res.send("SwiftPay API is running....");
 });
 
 app.listen(PORT, () => {
