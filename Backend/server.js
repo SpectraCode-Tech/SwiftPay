@@ -17,7 +17,7 @@ app.listen(PORT, '0.0.0.0', () => {
 connectDb();
 
 app.use(cors({
-  origin: 'https://swiftpayst.onrender.com', // Replace with your ACTUAL frontend URL
+  origin: 'https://swift-pay-gules.vercel.app', // Replace with your ACTUAL frontend URL
   credentials: true
 }));
 app.use(express.json());
