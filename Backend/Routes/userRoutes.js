@@ -6,7 +6,6 @@ import User from "../Models/User.js";
 const router = express.Router();
 
 // userRoutes.js
-const JWT_SECRET = process.env.JWT_SECRET || 'frrgrgrgrjngrnjgrggjrgnrngrnjgnrg';
 
 router.post("/register", async (req, res) => {
   try {
@@ -65,7 +64,7 @@ router.post("/login", async (req, res) => {
         email: user.email,
         role: user.role,
       },
-      JWT_SECRET,
+      process.env.JWT_SECRET,
       { expiresIn: "7d" },
     );
 

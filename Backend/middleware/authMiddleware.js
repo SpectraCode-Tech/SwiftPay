@@ -9,7 +9,7 @@ export const protect = async (req, res, next) => {
     try {
       token = req.headers.authorization.split(" ")[1];
       // authMiddleware.js
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'frrgrgrgrjngrnjgrggjrgnrngrnjgnrg');
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
 
       // Attach user to request, excluding password
