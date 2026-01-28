@@ -20,7 +20,7 @@ const navigate = useNavigate()
         e.preventDefault();
 
         try{
-            const res = await API.post('/users/login', formData);
+            const res = await API.post('/', formData);
             alert('Login successful!');
 
             localStorage.setItem('token', res.data.token);
