@@ -1,9 +1,38 @@
-import React from 'react'
+import { React, useState } from 'react'
+import API from '../api/api'
+import { useNavigate } from 'react-router-dom';
+
 
 const Join = () => {
+  const[formData, setFormData] = useState({
+        name: '',
+        username: '',
+        email: '',
+        password: '',
+    })
+
+    const handleChange = (e) => {
+        setFormData({...formData, [e.target.name]: e.target.value})
+    }
+    const navigate = useNavigate()
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try{
+            const res = await API.post('/users/register', formData);
+            alert('Registration successful!');
+
+            navigate("/dashboard")
+        }catch(error){
+            alert(error.response?.data?.message || 'Registration failed.');
+        }
+    } 
+    
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+      <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
         <h1 className="text-2xl font-bold text-center text-[#0a2540] mb-6">
           Create Your SwiftPay Account
         </h1>
@@ -16,6 +45,7 @@ const Join = () => {
             Full Name
           </label>
           <input
+            onChange={handleChange}
             type="text"
             id="name"
             name="name"
@@ -33,6 +63,7 @@ const Join = () => {
             Username
           </label>
           <input
+            onChange={handleChange}
             type="text"
             id="username"
             name="username"
@@ -50,6 +81,7 @@ const Join = () => {
             Email
           </label>
           <input
+            onChange={handleChange}
             type="email"
             id="email"
             name="email"
@@ -67,6 +99,7 @@ const Join = () => {
             Password
           </label>
           <input
+            onChange={handleChange}
             type="password"
             id="password"
             name="password"

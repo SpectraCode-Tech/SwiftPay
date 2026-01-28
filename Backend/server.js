@@ -1,26 +1,27 @@
-import express from 'express'
-import cors from 'cors'
-import {connectDb} from './database.js'
-import userRoutes from './routes/userRoutes.js'
-import transactionRoutes from './Routes/transactionRoutes.js'
+import express from "express";
+import cors from "cors";
+import { connectDb } from "./database.js";
+import userRoutes from "./Routes/userRoutes.js";
+import transactionRoutes from "./Routes/transactionRoutes.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 
-const app = express()
-const PORT = 6000
+const app = express();
+const PORT = 5000;
 
-connectDb()
+connectDb();
 
-app.use(cors()); //Allow frontend connection
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 
-app.use('/api/Users', userRoutes)
-app.use('/api/users', transactionRoutes);
-app.use('/uploads', express.static('uploads')); // Serve static files from uploads folder
+app.use("/api/users", userRoutes);
+app.use("/api/users", transactionRoutes);
 
-app.get('/', (req, res) => {
-    res.send('QuickPay API is running....')
-})
+app.get("/", (req, res) => {
+  res.send("QuickPay API is running....");
+});
 
 app.listen(PORT, () => {
-    console.log(`Backend is running at http://localhost:${PORT}`)
-})
+  console.log(`Backend is running at http://localhost:${PORT}`);
+});

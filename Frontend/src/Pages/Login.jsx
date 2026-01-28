@@ -1,9 +1,45 @@
-import React from 'react'
+import { React, useState } from 'react'
+import API from '../api/api'
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
+  const [formData, setFormData] = useState({
+  email: "",
+  password: ""
+});
+
+const navigate = useNavigate()
+
+ const handleChange = (e) => {
+        setFormData({...formData, [e.target.name]: e.target.value})
+    }
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try{
+            const res = await API.post('/users/login', formData);
+            alert('Login successful!');
+
+            localStorage.setItem('token', res.data.token);
+            localStorage.setItem('role', res.data.user.role);
+
+            if(res.data.user.role === 'admin'){
+                navigate("/admin")
+            }else{
+                navigate("/dashboard")
+            }
+
+
+        }catch(error){
+            alert(error.response?.data?.message || 'Login failed.');
+        }
+    } 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+      <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
         <h1 className="text-2xl font-bold text-center text-[#0a2540] mb-6">
           Login to SwiftPay
         </h1>
@@ -16,6 +52,7 @@ const Login = () => {
             Email
           </label>
           <input
+            onChange={handleChange}
             type="email"
             id="email"
             name="email"
@@ -33,6 +70,7 @@ const Login = () => {
             Password
           </label>
           <input
+            onChange={handleChange}
             type="password"
             id="password"
             name="password"

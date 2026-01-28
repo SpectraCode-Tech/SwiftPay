@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const MONGO_URI = 'mongodb+srv://admin:smartbuy53@smartbuy.19zhcvm.mongodb.net/'
+const MONGO_URI = 'mongodb+srv://Dimeji:iy8vLRpf24pFmvmH@cluster0.xtnqssk.mongodb.net/'
 
 
 export async function connectDb(){

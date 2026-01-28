@@ -5,6 +5,12 @@
   --color-dark-green: #0CBBAE;
   --color-orange: #FFAF1F;
 };
+:root{
+  --color-green: #5AD6C3;
+  --color-blue: #211C6E;
+  --color-dark-green: #0CBBAE;
+  --color-orange: #FFAF1F;
+}
 html{
   scroll-behavior: smooth;
 }
@@ -19,4 +25,78 @@ input, textarea{
 }
 button{
   cursor: pointer;
+}
+/* Container Base Styles */
+.panel {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  justify-content: space-around;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+              0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+}
+.panel li p{
+  display: none;
+}
+.panel-active {
+  color: var(--color-dark-green);   /* text color */
+  fill: var(--color-dark-green);    /* icon color */
+  font-weight: bold;                /* optional emphasis */
+}
+/* Tablet/Desktop Styles (sm: 640px and up) */
+@media (min-width: 640px) {
+  .panel {
+    /* 1. Base Sidebar Style */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 0;
+    height: 100vh;
+    padding: 2rem 1rem;
+    align-items: flex-start;
+    overflow: hidden; /* Prevents text from leaking during animation */
+
+    /* 2. Transition Width */
+    width: 64px; /* Collapsed width (icon only) */
+    transition: width 0.3s ease-in-out;
+  }
+
+  /* Expand panel on hover */
+  .panel:hover {
+    width: 200px; /* Expanded width to fit text */
+  }
+
+  .panel li p {
+    /* 3. Smooth Text Appearance */
+    display: none;
+    opacity: 0;
+    font-weight: bold;
+    white-space: nowrap; /* Prevents text from wrapping while width grows */
+    
+    /* allow-discrete enables transition for 'display' property */
+    transition: display 0.3s allow-discrete, opacity 0.3s ease-in-out;
+  }
+
+  .panel:hover li p {
+    display: block;
+    opacity: 1;
+  }
+
+  /* Define starting state for entry transition */
+  @starting-style {
+    .panel:hover li p {
+      opacity: 0;
+    }
+  }
+
+  .panel li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 }
