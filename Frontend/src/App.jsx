@@ -12,7 +12,7 @@ const App = () => {
   const currentUser = JSON.parse(localStorage.getItem("user")); 
   return (
     <div>
-      <BrowserRouter basename='/SwiftPay'>
+      <BrowserRouter basename='/'>
      <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
