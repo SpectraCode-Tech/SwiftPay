@@ -10,7 +10,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
-
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Backend is running at http://localhost:${PORT}`);
+});
 
 connectDb();
 
